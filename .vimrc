@@ -21,11 +21,35 @@ let g:vimtex_view_method = 'my_zathura'
 "let g:vimtex_view_general_viewer = 'qpdfview'
 "let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
 "let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_view_general_options_latexmk = '-pdflatex=lualatex'
 
-let g:vimtex_view_automatic = 0
+"let g:vimtex_view_automatic = 0
 let g:vimtex_view_forward_search_on_start = 0
-let g:vimtex_view_process_start = 1
-let g:vimtex_view_xwin_exists = 1
+let g:vimtex_view_process_start = 0
+let g:vimtex_view_xwin_exists = 0
+
+autocmd FileType julia hi DiffAdd guifg=NONE ctermfg=NONE guibg=#464632 ctermbg=238 gui=NONE cterm=NONE
+autocmd FileType julia hi DiffChange guifg=NONE ctermfg=NONE guibg=#335261 ctermbg=239 gui=NONE cterm=NONE
+autocmd FileType julia hi DiffDelete guifg=#f43753 ctermfg=203 guibg=#79313c ctermbg=237 gui=NONE cterm=NONE
+autocmd FileType julia hi DiffText guifg=NONE ctermfg=NONE guibg=NONE ctermbg=NONE gui=reverse cterm=reverse
+
+" julia
+"autocmd FileType julia let g:default_julia_version = '1.0'
+
+" language server
+"autocmd FileType julia let g:LanguageClient_autoStart = 1
+"autocmd FileType julia let g:LanguageClient_serverCommands = {
+"\   'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+"\       using LanguageServer;
+"\       server = LanguageServer.LanguageServerInstance(stdin, stdout, false);
+"\       server.runlinter = true;
+"\       run(server);
+"\   '],
+"\ }
+
+"autocmd FileType julia nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"autocmd FileType julia nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+"autocmd FileType julia nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 "let g:vimtex_compiler_latexmk = { 
 "      \  'callback' : 0,

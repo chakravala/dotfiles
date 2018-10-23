@@ -99,7 +99,7 @@ set $workspace3 "3) Project "
 set $workspace4 "4) Encode "
 #
 set $workspace5 "5) Archive "
-set $workspace6 "6) Scatter "
+set $workspace6 "6) Scatter "
 set $workspace7 "(7)"
 #7) Dream 
 set $workspace8 "(8)"
@@ -134,10 +134,13 @@ assign [class="Atom"] $workspace3
 assign [class="TeXstudio"] $workspace4
 assign [class="qpdfview"] $workspace5
 assign [class="Firefox"] $workspace0
-assign [class="QupZilla"] $workspace0
+assign [class="Falkon"] $workspace0
 assign [class="Thunderbird"] $workspace6
 
-for_window [class="QupZilla" window_type="normal"] border none
+for_window [class="Wine" instance="reaper_host32.exe"] floating enable
+for_window [class="Mainwindow.py"] floating enable
+for_window [class="qjackctl" window_type="normal"] floating enable
+for_window [class="Falkon" window_type="normal"] border none
 for_window [class="TeXstudio" window_type="normal"] border none
 for_window [class="qpdfview" window_type="normal"] border none
 for_window [class="Firefox" window_type="normal"] border none
@@ -200,6 +203,7 @@ hide_edge_borders both
 # finds out, if available)
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
+		tray_output primary
 	colors {
 		background $bg-color
 		separator #757575
@@ -211,16 +215,42 @@ bar {
 	position top
 }
 
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less move workspace to output left
+
 bindsym $mod+shift+x exec i3lock --color "#000000" -nfe
 
+bindsym $mod+F9 exec touchpad-toggle
+bindsym XF86TouchpadToggle exec touchpad-toggle
+bindsym XF86Launch2 exec touchpad-toggle
+
+# ALSA controls
+bindsym XF86AudioRaiseVolume exec amixer sset Master playback 2db+
+bindsym XF86AudioLowerVolume exec amixer sset Master playback 2db-
+bindsym XF86AudioMute exec amixer sset Master playback toggle
+bindsym $mod+F12 exec amixer sset Master playback 2db+
+bindsym $mod+F11 exec amixer sset Master playback 2db-
+bindsym $mod+F10 exec amixer sset Master playback toggle
+
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#bindsym $mod+F12 exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym $mod+F11 exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym $mod+F10 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 2 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 2 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 2 # decrease screen brightness
+bindsym $mod+F6 exec xbacklight -inc 2 # increase screen brightness
+bindsym $mod+F5 exec xbacklight -dec 2 # decrease screen brightness
+
+# increase/decrease keyboard brightness
+#bindsym XF86KbdBrightnessUp exec kbd_backlight up
+#bindsym XF86KbdBrightnessDown exec kbd_backlight down 
+bindsym $mod+F4 exec /usr/local/share/kbd_backlight up
+bindsym $mod+F3 exec /usr/local/share/kbd_backlight down
 
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
@@ -231,10 +261,12 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 2 # decrease screen brightnes
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
 
+bindsym $mod+m exec midi-connect
+
 exec --no-startup-id nm-applet
 exec --no-startup-id pamac-tray
 
-exec_always feh --bg-center ~/Pictures/scalar_it500-c.png
+exec_always feh --bg-tile ~/Pictures/scalar_it500-c.png
 
 exec compton -f
 
