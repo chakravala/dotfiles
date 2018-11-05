@@ -1,7 +1,7 @@
 ENV["JULIA_NUM_THREADS"] = 8
 ENV["AUTHOR"] = "Michael Reed"
 ENV["EDITOR"] = "vim"
-ENV["PYTHON"] = "python2"
+ENV["PYTHON"] = "python"
 #ENV["REDPRE"] = "0"
 #using Reduce
 #@force using Reduce.Algebra
