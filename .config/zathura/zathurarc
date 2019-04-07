@@ -2,3 +2,4 @@ set adjust-open bestfit
 set synctex true
 set synctex-editor-command "vim --servername VIM --remote-silent +%2<Enter>zz %1"
 set guioptions ""
+map <C-r> feedkeys ":exec rename_file '$FILE'<Return>"

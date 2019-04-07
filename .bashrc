@@ -26,6 +26,8 @@ export MPLBACKEND="qt5agg"
 
 alias kbd_backlight='/bin/bash /usr/local/share/kbd_backlight'
 
+alias ls='lsd'
+
 complete -f -X '!*.tex' vimtex
 
 #GDK_BACKEND=x11 /usr/bin/zathura "$@"

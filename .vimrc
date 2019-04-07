@@ -3,6 +3,17 @@ call pathogen#helptags()
 syntax on
 filetype plugin indent on
 
+" auto completion
+set wildmode=longest,list,full
+
+" spell checking
+map <leader>o :setlocal spell! spelllang=en_US<CR>
+map <leader>s :!clear && shellcheck %<CR>
+
+" bibliography
+map <leader>b :vsp<space>$BIB<CR>
+map <leader>r :vsp<space>$REFER<CR>
+
 set undodir=~/.vim/undodir
 set undofile nocompatible number
 set completeopt=menuone,longest,preview complete+=k
