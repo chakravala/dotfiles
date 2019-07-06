@@ -1,7 +1,7 @@
 execute pathogen#infect()
 call pathogen#helptags()
-syntax on
 filetype plugin indent on
+syntax on
 
 " auto completion
 set wildmode=longest,list,full

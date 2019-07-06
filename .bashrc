@@ -20,7 +20,7 @@ export _JAVA_OPTIONS=-Dawt.useSystemAAFontSettings=on
 
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
-export JULIA_NUM_THREADS=8
+export JULIA_NUM_THREADS="$(nproc)"
 
 export MPLBACKEND="qt5agg"
 
