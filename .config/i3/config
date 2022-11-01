@@ -136,17 +136,20 @@ bindsym $mod+Shift+0 move container to workspace $workspace0
 assign [class="Atom"] $workspace3
 assign [class="TeXstudio"] $workspace4
 assign [class="qpdfview"] $workspace5
-assign [class="Firefox"] $workspace0
+assign [class="firefox"] $workspace0
+assign [class="firefoxdeveloperedition"] $workspace0
 assign [class="Falkon"] $workspace0
 assign [class="Thunderbird"] $workspace6
 
+for_window [class="Makie"] floating enable
 for_window [class="Wine" instance="reaper_host32.exe"] floating enable
 for_window [class="Mainwindow.py"] floating enable
 for_window [class="qjackctl" window_type="normal"] floating enable
 for_window [class="Falkon" window_type="normal"] border none
 for_window [class="TeXstudio" window_type="normal"] border none
 for_window [class="qpdfview" window_type="normal"] border none
-for_window [class="Firefox" window_type="normal"] border none
+for_window [class="firefox" window_type="normal"] border none
+for_window [class="firefoxdeveloperedition" window_type="normal"] border none
 for_window [class="Atom" window_type="normal"] border none
 for_window [class="Thunderbird" window_type="normal"] border none
 for_window [class=" "] floating enable
@@ -270,6 +273,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id pamac-tray
 
 exec_always feh --bg-tile ~/Pictures/scalar_it500-c.png
+#exec --no-startup-id stellarium
 
 exec compton -f
 

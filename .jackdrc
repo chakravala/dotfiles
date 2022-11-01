@@ -1,1 +1,0 @@
-/usr/bin/jackd -p512 -dalsa -dhw:H4,0 -r44100 -p512 -n2 -Xseq -C
