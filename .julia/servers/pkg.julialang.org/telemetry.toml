@@ -1,0 +1,3 @@
+client_uuid = false
+secret_salt = false
+telemetry = false

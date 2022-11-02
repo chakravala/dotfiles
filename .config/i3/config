@@ -266,14 +266,24 @@ bindsym $mod+F3 exec /usr/local/share/kbd_backlight down
 #bindsym XF86AudioPause exec playerctl pause
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessUp exec light -As "sysfs/backlight/amdgpu_bl0" 2 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -Us "sysfs/backlight/amdgpu_bl0" 2 # decrease screen brightness
 
 bindsym $mod+m exec midi-connect
 
+set $bg ~/Pictures/scalar_it500-c.png
+
+#bindsym $mod+Shift+F8 exec xrandr -s 1280x800 & feh --bg-scale $bg
+#bindsym $mod+Shift+F9 exec xrandr -s 1440x900 & feh --bg-scale $bg
+#bindsym $mod+Shift+F10 exec xrandr -s 1680x1050 & feh --bg-scale $bg
+#bindsym $mod+Shift+F11 exec xrandr -s 1920x1200 & feh --bg-scale $bg
+#bindsym $mod+Shift+F12 exec xrandr -s 2560x1600 & feh --bg-scale $bg
+
+exec_always feh --bg-scale $bg
+#exec --no-startup-id stellarium
+
 exec --no-startup-id nm-applet
 exec --no-startup-id pamac-tray
-
-exec_always feh --bg-tile ~/Pictures/scalar_it500-c.png
-#exec --no-startup-id stellarium
 
 exec compton -f
 
